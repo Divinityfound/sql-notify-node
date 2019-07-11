@@ -14,22 +14,21 @@ app.get('/', function(req, res) {
 
 
 server.listen(port, function(){
-	
+
 	var dsn = {
-	  host:     process.env.HOSTNAME,
-	  user:     process.env.USERNAME,
-	  password: process.env.PASSWORD,
-	  port:     3306
+		host:     process.env.HOSTNAME,
+		user:     process.env.USERNAME,
+		password: process.env.PASSWORD,
+		port:     3306
 	};
 
 	var myCon = MySQLEvents(dsn);
 
 	var event1 = myCon.add(
-	  'zing_database.1932883a_c738_4895_af13_48a06b5e8ab3',
+	  'zing_database',
 	  function (oldRow, newRow, event) {
 	    console.log(event);
-	  }, 
-	  'Active'
+	  }
 	);
 
 	console.log('listening on *:'+port);
